@@ -14,10 +14,7 @@ area.addEventListener('click', function (event) {
         move % 2 == 0 ? event.target.innerHTML = 'X' : event.target.innerHTML = 'O';
         move++;
         check();
-        if (hasEmptyBox()) {
-            result = 'Ничья';
-            prepareResult2(result);
-        }
+        
     }
 });
 
@@ -43,6 +40,11 @@ const check = () => {
         } else if (boxes[item[0]].innerHTML == 'O' && boxes[item[1]].innerHTML == 'O' && boxes[item[2]].innerHTML == 'O') {
             result = 'нолики';
             prepareResult(result);
+        } else {
+            if (hasEmptyBox()) {
+                result = 'Ничья';
+                prepareResult2(result);
+            }
         }
     }
 };
