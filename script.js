@@ -14,10 +14,10 @@ area.addEventListener('click', function (event) {
         move % 2 == 0 ? event.target.innerHTML = 'X' : event.target.innerHTML = 'O';
         move++;
         check();
-        /* if (hasEmptyBox()) {
-            alert('ничья');
-        } */
-        /* hasEmptyBox(); */
+        if (hasEmptyBox()) {
+            result = 'Ничья';
+            prepareResult2(result);
+        }
     }
 });
 
@@ -52,6 +52,11 @@ const prepareResult = winner => {
     modalResult.style.display = 'block';
 };
 
+const prepareResult2 = winner => {
+    contentResult.innerHTML = `${winner}!`;
+    modalResult.style.display = 'block';
+};
+
 const closeModal = () => {
     modalResult.style.display = 'none';
     location.reload();
@@ -61,16 +66,14 @@ overlay.addEventListener('click', closeModal);
 btnClose.addEventListener('click', closeModal);
 
 
-/* const hasEmptyBox = function () {
+const hasEmptyBox =  () => {
     const boxes = document.querySelectorAll('.box');
-    boxes.forEach(function(item) {
-        console.log(!!item.innerHTML);
+    for (let item of boxes) {
         if (!item.innerHTML) {
             return false;
-        } else {
-            
         }
-    });
+    }
     return true;
     
-}; */
+};
+
