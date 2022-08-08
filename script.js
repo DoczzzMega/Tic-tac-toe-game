@@ -14,9 +14,10 @@ area.addEventListener('click', function (event) {
         move % 2 == 0 ? event.target.innerHTML = 'X' : event.target.innerHTML = 'O';
         move++;
         check();
-        if (!hasEmptyBox()) {
+        /* if (hasEmptyBox()) {
             alert('ничья');
-        }
+        } */
+        /* hasEmptyBox(); */
     }
 });
 
@@ -60,9 +61,10 @@ overlay.addEventListener('click', closeModal);
 btnClose.addEventListener('click', closeModal);
 
 
-const hasEmptyBox = function () {
+/* const hasEmptyBox = function () {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach(function(item) {
+        console.log(!!item.innerHTML);
         if (!item.innerHTML) {
             return false;
         } else {
@@ -71,4 +73,4 @@ const hasEmptyBox = function () {
     });
     return true;
     
-};
+}; */
