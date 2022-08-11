@@ -2,7 +2,7 @@
 
 const area = document.getElementById('area');
 let move = 0;
-let result = '';
+
 
 const contentResult = document.getElementById('content');
 const modalResult = document.getElementById('modal-result-wrapper');
@@ -14,13 +14,13 @@ area.addEventListener('click', function (event) {
         move % 2 == 0 ? event.target.innerHTML = 'X' : event.target.innerHTML = 'O';
         move++;
         check();
-        
+
     }
 });
 
 const check = () => {
     const boxes = document.querySelectorAll('.box');
-    console.log(boxes);
+    let result = '';
     const arrWin = [
         [0, 1, 2],
         [3, 4, 5],
@@ -40,12 +40,11 @@ const check = () => {
         } else if (boxes[item[0]].innerHTML == 'O' && boxes[item[1]].innerHTML == 'O' && boxes[item[2]].innerHTML == 'O') {
             result = 'нолики';
             prepareResult(result);
-        } else {
-            if (hasEmptyBox()) {
-                result = 'Ничья';
-                prepareResult2(result);
-            }
         }
+    }
+    if (hasEmptyBox() && result == '') {
+        result = 'Ничья';
+        prepareResult2(result);
     }
 };
 
@@ -68,7 +67,7 @@ overlay.addEventListener('click', closeModal);
 btnClose.addEventListener('click', closeModal);
 
 
-const hasEmptyBox =  () => {
+const hasEmptyBox = () => {
     const boxes = document.querySelectorAll('.box');
     for (let item of boxes) {
         if (!item.innerHTML) {
@@ -76,6 +75,5 @@ const hasEmptyBox =  () => {
         }
     }
     return true;
-    
-};
 
+};
