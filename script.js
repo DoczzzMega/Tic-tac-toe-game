@@ -2,6 +2,7 @@
 
 const area = document.getElementById('area');
 let move = 0;
+let result = '';
 
 
 const contentResult = document.getElementById('content');
